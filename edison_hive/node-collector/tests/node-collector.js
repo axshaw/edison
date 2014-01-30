@@ -119,6 +119,21 @@ describe('api queries using get and post',function(){
 			done();
 		})
 	})
+
+	it('should create json object to prepare for posting to rabbit', function(done){
+		request(collector)
+		.post('/api')
+		.send({
+
+		})
+		.expect(200)
+		.end(function(err,res){
+			if(err){
+				return done(err);
+			}
+			done();
+		})
+	});
 });
 
 
