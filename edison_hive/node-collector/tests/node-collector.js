@@ -120,13 +120,15 @@ describe('api queries using get and post',function(){
 		})
 	})
 
-	it('should create json object to prepare for posting to rabbit', function(done){
-		request(collector)
+	it('should create object to store time of contact & edison id prepares object for posting to rabbit`', function(done){
+		request(collector.edison)
 		.post('/api')
 		.send({
-
+			'edID': 00001,
+			'contactTime':'2013-10-10T10:10:10.101010'
 		})
 		.expect(200)
+		expect(collector.)
 		.end(function(err,res){
 			if(err){
 				return done(err);
