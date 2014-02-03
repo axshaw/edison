@@ -1,9 +1,11 @@
 // web.js
-var express = require("express");
-var logfmt = require("logfmt");
-var flash 	 = require('connect-flash');
-var passport = require('passport');
-var app = express();
+var express = require("express"),
+    logfmt = require("logfmt"),
+    flash 	 = require('connect-flash'),
+    passport = require('passport'),
+    app = express(),
+    Edison = require("./app/edison.js");
+
 module.exports = app;
 //var port = process.env.PORT || 5000;
 require('./config/passport.js')(passport); // pass passport for configuration
@@ -24,7 +26,7 @@ app.configure(function()	{
 })
 
 
-require('./app/routes.js')(app, passport);
+require('./app/routes.js')(app, passport, Edison);
 
 
 

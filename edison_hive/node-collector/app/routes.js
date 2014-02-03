@@ -1,5 +1,5 @@
 // app/routes.js
-module.exports = function(app, passport) {
+module.exports = function(app, passport, Edison) {
 
 	// =====================================
 	// HOME         ========
@@ -90,7 +90,9 @@ module.exports = function(app, passport) {
 			if (isNaN(req.body.edID))	{
 				res.send(403,'Missing application ID');	
 			}else	{
+				var eddy = new Edison(req.body.edID);
 				res.send(200);
+				
 			}
 
 	});
