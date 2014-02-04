@@ -7,7 +7,7 @@ function Edison(edID,db){
 }
 
 Edison.prototype.registerHeartbeat = function() {
-	
+	return this.db.updateHeartBeat(this.edID,this.heartbeatTime);
 }
 
 Edison.prototype.isAlive = function() {
