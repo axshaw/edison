@@ -5,7 +5,7 @@ module.exports = function(app, passport, Edison) {
 	// HOME         ========
 	// =====================================
 	app.get('/', function(req, res) {
-	  res.send();
+	  res.send("edison");
 	});
 
 
@@ -19,7 +19,7 @@ module.exports = function(app, passport, Edison) {
 	app.get('/login', function(req, res) {
 
 		// render the page and pass in any flash data if it exists
-		res.render('login.ejs', { message: req.flash('loginMessage') }); 
+		res.render('login.ejs', { message: req.flash('loginMessage') });
 	});
 
 	// GET /auth/google
@@ -27,7 +27,7 @@ module.exports = function(app, passport, Edison) {
 	//   request.  The first step in Google authentication will involve redirecting
 	//   the user to google.com.  After authenticating, Google will redirect the
 	//   user back to this application at /auth/google/return
-	app.get('/auth/google', 
+	app.get('/auth/google',
 	  passport.authenticate('google', { failureRedirect: '/login' }),
 	  function(req, res) {
 	    res.redirect('/');
@@ -38,16 +38,16 @@ module.exports = function(app, passport, Edison) {
 	//   request.  If authentication fails, the user will be redirected back to the
 	//   login page.  Otherwise, the primary route function function will be called,
 	//   which, in this example, will redirect the user to the home page.
-	app.get('/auth/google/return', 
+	app.get('/auth/google/return',
 	  passport.authenticate('google', { failureRedirect: '/login' }),
 	  function(req, res) {
 	    res.redirect('/');
 	  });
 
 
-	// 
+	//
 	// LOGOUT
-	// 
+	//
 	app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/login');
@@ -88,11 +88,11 @@ module.exports = function(app, passport, Edison) {
 
 		app.post('/api',function(req, res) {
 			if (isNaN(req.body.edID))	{
-				res.send(403,'Missing application ID');	
+				res.send(403,'Missing application ID');
 			}else	{
 				var eddy = new Edison(req.body.edID);
 				res.send(200);
-				
+
 			}
 
 	});
@@ -104,7 +104,7 @@ module.exports = function(app, passport, Edison) {
 // route middleware to make sure a user is logged in
 function isLoggedIn(req, res, next) {
 
-	// if user is authenticated in the session, carry on 
+	// if user is authenticated in the session, carry on
 	if (req.isAuthenticated())
 		return next();
 
